@@ -4,6 +4,42 @@
              xmlns:local="clr-namespace:TaskTrackerApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#dee3eb"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderBrush" Value="#c4c9d1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#4f8ef7"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <DropShadowEffect x:Key="DropShadow"
+                          Color="#000000"
+                          Opacity="0.1"
+                          BlurRadius="10"
+                          ShadowDepth="2"/>
+
+        <!-- Text decoration converter -->
+        <local:BoolToTextDecorationConverter x:Key="BoolToTextDecorationConverter"/>
+
+        <!-- Background color based on completion -->
+        <local:BoolToColorConverter x:Key="BoolToColorConverter"/>
     </Application.Resources>
 </Application>
