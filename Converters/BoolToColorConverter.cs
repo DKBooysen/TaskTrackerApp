@@ -4,20 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
-using System.Windows;
 using System.Windows.Data;
-using System.Windows.Media.TextFormatting;
+using System.Windows.Media;
 
-namespace TaskTrackerApp
+namespace TaskTrackerApp.Converters
 {
-    [ValueConversion(typeof(bool), typeof(TextDecorationCollection))]
-    public class BoolToTextDecorationConverter : IValueConverter
+    public class BoolToColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is bool isCompleted && isCompleted)
-                return TextDecorations.Strikethrough;
-            return null;
+                return new SolidColorBrush(Color.FromRgb(240, 248, 255)); // Light blue background for completed
+            return new SolidColorBrush(Colors.White);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -1,6 +1,7 @@
 ﻿<Window x:Class="TaskTrackerApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:local="clr-namespace:TaskTrackerApp"
+        xmlns:local1="clr-namespace:TaskTrackerApp.Converters"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Task Tracker"
         Height="650"
@@ -11,7 +12,7 @@
 
     <Window.Resources>
         <!-- Converter for Priority colors -->
-        <local:PriorityToColorConverter x:Key="PriorityToColorConverter"/>
+        <local1:PriorityToColorConverter x:Key="PriorityToColorConverter"/>
 
         <!-- Fade-in animation style for ListBox items -->
         <Style TargetType="ListBoxItem" x:Key="TaskItemStyle">
@@ -181,7 +182,7 @@
                  Margin="0,0,0,10"
                  TextChanged="SearchBox_TextChanged"/>
 
-                <!-- ListBox (no ScrollViewer) -->
+                <!-- ListBox -->
                 <ListBox x:Name="TaskList"
                  Grid.Row="1"
                  ItemContainerStyle="{StaticResource TaskItemStyle}"
